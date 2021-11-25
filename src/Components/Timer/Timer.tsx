@@ -1,7 +1,14 @@
 import React, { useState } from "react";
-import { Hour } from "../../Types/index";
-import Buttons from "../../Components/Buttons";
-import "./timer.css";
+import Buttons from "../Buttons/Buttons";
+import "./Timer.css";
+
+type timerType = {
+  hour: number;
+  minute: number;
+  second: number;
+};
+type Hour = number;
+type Action = () => void;
 
 const Timer = () => {
   const [disable, setDisable] = useState(false);
@@ -13,9 +20,19 @@ const Timer = () => {
     setDisable(true);
     setAccess(
       setInterval(() => {
-        if (seconds > 59) { seconds = 0; minutes += 1; setMinutes(minutes); }
-        else if (minutes > 59) { seconds = 0; minutes = 0; hours++; setHours(hours); }
-        else { setSeconds(seconds); seconds += 1; }
+        if (seconds > 59) {
+          seconds = 0;
+          minutes += 1;
+          setMinutes(minutes);
+        } else if (minutes > 59) {
+          seconds = 0;
+          minutes = 0;
+          hours++;
+          setHours(hours);
+        } else {
+          setSeconds(seconds);
+          seconds += 1;
+        }
       }, 1000)
     );
   };
@@ -37,11 +54,11 @@ const Timer = () => {
       </span>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div className="allButtons" style={{ display: "flex" }}>
-          {disable ?
-            (<Buttons title="Start" click={start} disable={disable} />)
-            :
-            (<Buttons title="Start" click={start} disable={false} />)
-          }
+          {disable ? (
+            <Buttons title="Start" click={start} disable={disable} />
+          ) : (
+            <Buttons title="Start" click={start} disable={false} />
+          )}
           <Buttons title="Pause" click={pause} disable={false} />
           <Buttons title="Reset" click={Reset} disable={false} />
         </div>

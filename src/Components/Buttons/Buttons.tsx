@@ -1,10 +1,16 @@
 import React from "react";
-import "./actionButton.css";
-const Buttons: React.FC<{
+import "./Buttons.css";
+
+type buttonType = {
   title: string;
   click: () => void;
   disable: boolean;
-}> = ({ title, click, disable }) => {
+};
+const Buttons: React.FC<buttonType> = ({
+  title,
+  click,
+  disable,
+}) => {
   return (
     <button disabled={disable} className="actionBtn" onClick={click}>
       {title}

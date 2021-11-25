@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Buttons from "./index";
+import Buttons from "./Buttons";
 describe("App", () => {
   let container: any;
 
