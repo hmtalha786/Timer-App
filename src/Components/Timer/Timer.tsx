@@ -2,19 +2,11 @@ import React, { useState } from "react";
 import Buttons from "../Buttons/Buttons";
 import "./Timer.css";
 
-type timerType = {
-  hour: number;
-  minute: number;
-  second: number;
-};
-type Hour = number;
-type Action = () => void;
-
 const Timer = () => {
   const [disable, setDisable] = useState(false);
-  let [hours, setHours] = useState<Hour>(0);
-  let [minutes, setMinutes] = useState<Hour>(0);
-  let [seconds, setSeconds] = useState<Hour>(0);
+  let [hours, setHours] = useState<number>(0);
+  let [minutes, setMinutes] = useState<number>(0);
+  let [seconds, setSeconds] = useState<number>(0);
   let [access, setAccess] = useState<any>();
   let start = () => {
     setDisable(true);
